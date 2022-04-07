@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmpleadoCreateDlg" widgetVar="EmpleadoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEmpleadoTitle}">
+            <h:form id="EmpleadoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{empleadoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEmpleadoLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{empleadoController.selected.nombre}" title="#{bundle.CreateEmpleadoTitle_nombre}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.CreateEmpleadoLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{empleadoController.selected.direccion}" title="#{bundle.CreateEmpleadoTitle_direccion}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_direccion}"/>
+                        <p:outputLabel value="#{bundle.CreateEmpleadoLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{empleadoController.selected.telefono}" title="#{bundle.CreateEmpleadoTitle_telefono}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_telefono}"/>
+                        <p:outputLabel value="#{bundle.CreateEmpleadoLabel_dui}" for="dui" />
+                        <p:inputText id="dui" value="#{empleadoController.selected.dui}" title="#{bundle.CreateEmpleadoTitle_dui}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_dui}"/>
+                        <p:outputLabel value="#{bundle.CreateEmpleadoLabel_tipoEmpleado}" for="tipoEmpleado" />
+                        <p:inputText id="tipoEmpleado" value="#{empleadoController.selected.tipoEmpleado}" title="#{bundle.CreateEmpleadoTitle_tipoEmpleado}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_tipoEmpleado}"/>
+                        <p:outputLabel value="#{bundle.CreateEmpleadoLabel_pagoDia}" for="pagoDia" />
+                        <p:inputText id="pagoDia" value="#{empleadoController.selected.pagoDia}" title="#{bundle.CreateEmpleadoTitle_pagoDia}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_pagoDia}"/>
+                        <p:outputLabel value="#{bundle.CreateEmpleadoLabel_usuarioIdusuario}" for="usuarioIdusuario" />
+                        <p:inputText id="usuarioIdusuario" value="#{empleadoController.selected.usuarioIdusuario}" title="#{bundle.CreateEmpleadoTitle_usuarioIdusuario}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_usuarioIdusuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{empleadoController.create}" value="#{bundle.Save}" update="display,:EmpleadoListForm:datalist,:growl" oncomplete="handleSubmit(args,'EmpleadoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EmpleadoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

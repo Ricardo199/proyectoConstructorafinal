@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProyectoCreateDlg" widgetVar="ProyectoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProyectoTitle}">
+            <h:form id="ProyectoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{proyectoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProyectoLabel_fechaInicio}" for="fechaInicio" />
+                        <p:calendar id="fechaInicio" pattern="MM/dd/yyyy" value="#{proyectoController.selected.fechaInicio}" title="#{bundle.EditProyectoTitle_fechaInicio}" required="true" requiredMessage="#{bundle.EditProyectoRequiredMessage_fechaInicio}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateProyectoLabel_fechaFinal}" for="fechaFinal" />
+                        <p:calendar id="fechaFinal" pattern="MM/dd/yyyy" value="#{proyectoController.selected.fechaFinal}" title="#{bundle.EditProyectoTitle_fechaFinal}" required="true" requiredMessage="#{bundle.EditProyectoRequiredMessage_fechaFinal}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateProyectoLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{proyectoController.selected.direccion}" title="#{bundle.CreateProyectoTitle_direccion}" required="true" requiredMessage="#{bundle.CreateProyectoRequiredMessage_direccion}"/>
+                        <p:outputLabel value="#{bundle.CreateProyectoLabel_poercetajeGanancia}" for="poercetajeGanancia" />
+                        <p:inputText id="poercetajeGanancia" value="#{proyectoController.selected.poercetajeGanancia}" title="#{bundle.CreateProyectoTitle_poercetajeGanancia}" required="true" requiredMessage="#{bundle.CreateProyectoRequiredMessage_poercetajeGanancia}"/>
+                        <p:outputLabel value="#{bundle.CreateProyectoLabel_montoEmpleados}" for="montoEmpleados" />
+                        <p:inputText id="montoEmpleados" value="#{proyectoController.selected.montoEmpleados}" title="#{bundle.CreateProyectoTitle_montoEmpleados}" required="true" requiredMessage="#{bundle.CreateProyectoRequiredMessage_montoEmpleados}"/>
+                        <p:outputLabel value="#{bundle.CreateProyectoLabel_montoMaquinaria}" for="montoMaquinaria" />
+                        <p:inputText id="montoMaquinaria" value="#{proyectoController.selected.montoMaquinaria}" title="#{bundle.CreateProyectoTitle_montoMaquinaria}" required="true" requiredMessage="#{bundle.CreateProyectoRequiredMessage_montoMaquinaria}"/>
+                        <p:outputLabel value="#{bundle.CreateProyectoLabel_montoMateriaPrima}" for="montoMateriaPrima" />
+                        <p:inputText id="montoMateriaPrima" value="#{proyectoController.selected.montoMateriaPrima}" title="#{bundle.CreateProyectoTitle_montoMateriaPrima}" required="true" requiredMessage="#{bundle.CreateProyectoRequiredMessage_montoMateriaPrima}"/>
+                        <p:outputLabel value="#{bundle.CreateProyectoLabel_montoToltal}" for="montoToltal" />
+                        <p:inputText id="montoToltal" value="#{proyectoController.selected.montoToltal}" title="#{bundle.CreateProyectoTitle_montoToltal}" required="true" requiredMessage="#{bundle.CreateProyectoRequiredMessage_montoToltal}"/>
+                        <p:outputLabel value="#{bundle.CreateProyectoLabel_porcentajeAvanse}" for="porcentajeAvanse" />
+                        <p:inputText id="porcentajeAvanse" value="#{proyectoController.selected.porcentajeAvanse}" title="#{bundle.CreateProyectoTitle_porcentajeAvanse}" required="true" requiredMessage="#{bundle.CreateProyectoRequiredMessage_porcentajeAvanse}"/>
+                        <p:outputLabel value="#{bundle.CreateProyectoLabel_estadoActual}" for="estadoActual" />
+                        <p:inputText id="estadoActual" value="#{proyectoController.selected.estadoActual}" title="#{bundle.CreateProyectoTitle_estadoActual}" required="true" requiredMessage="#{bundle.CreateProyectoRequiredMessage_estadoActual}"/>
+                        <p:outputLabel value="#{bundle.CreateProyectoLabel_clienteIdcliente}" for="clienteIdcliente" />
+                        <p:inputText id="clienteIdcliente" value="#{proyectoController.selected.clienteIdcliente}" title="#{bundle.CreateProyectoTitle_clienteIdcliente}" required="true" requiredMessage="#{bundle.CreateProyectoRequiredMessage_clienteIdcliente}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{proyectoController.create}" value="#{bundle.Save}" update="display,:ProyectoListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProyectoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProyectoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
